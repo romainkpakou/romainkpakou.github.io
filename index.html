@@ -1586,18 +1586,23 @@
         <span class="project-num">/ 01</span>
         <span class="project-type">Génomique clinique</span>
       </div>
-      <h3 class="project-title">Variants structuraux &amp; <em>CNV</em> sur cohorte clinique</h3>
+      <h3 class="project-title">Variants structuraux &amp; <em>CNV</em> dans un panel de gènes cardiaques</h3>
       <p class="project-desc">
-        Analyse de variants structuraux issus de WGS Illumina sur une cohorte de 284 patients
-        atteints de prolapsus valvulaire mitral. Identification, annotation et priorisation
-        de CNV d'intérêt dans les gènes associés aux arythmies et cardiomyopathies, à partir
-        de fichiers VCF (calling Delly et Smoove).
+        Détection et priorisation de CNV dans 7 gènes associés aux cardiomyopathies et
+        arythmies (<em>TTN</em>, <em>MYH7</em>, <em>LMNA</em>...), méthodologie reprise
+        d'une analyse clinique originale (284 patients, non publiable) et démontrée ici sur
+        le callset public 1000 Genomes : filtrage régional, annotation fonctionnelle
+        (API Ensembl VEP), priorisation par impact et fréquence populationnelle.
       </p>
       <div class="project-stack">
-        <span>R/Bioconductor</span>
-        <span>bcftools</span>
-        <span>AnnotSV</span>
-        <span>VCF · Delly · Smoove</span>
+        <span>bedtools · bcftools</span>
+        <span>Ensembl VEP</span>
+        <span>1000 Genomes (GRCh37)</span>
+        <span>R Markdown</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/romainkpakou/cnv-clinical-pipeline" target="_blank" rel="noopener">Dépôt GitHub →</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/romainkpakou/cnv-clinical-pipeline/blob/main/results/report.html" target="_blank" rel="noopener">Rapport →</a>
       </div>
     </article>
 
