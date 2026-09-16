@@ -1613,15 +1613,21 @@
       </div>
       <h3 class="project-title">Épissage <em>alternatif</em> dans des gènes cardiovasculaires</h3>
       <p class="project-desc">
-        Identification de jonctions d'épissage non décrites dans des gènes cardiovasculaires
-        à partir de fichiers BAM multi-tissus (projet ENCODE). Pipeline samtools / bedtools,
-        comparaison à un GTF de référence, génération de fichiers BED de nouvelles jonctions.
+        Jonctions d'épissage candidates dans 5 gènes cardiovasculaires (<em>TTN</em>,
+        <em>RBM20</em>, <em>SCN5A</em>...), à partir de BAM RNA-seq publics ENCODE
+        (ventricule et oreillette gauches). Extraction régionale samtools, jonctions via
+        regtools, comparaison aux exons connus (API Ensembl) pour isoler les candidates
+        non décrites — 505 identifiées sur 2173 jonctions détectées.
       </p>
       <div class="project-stack">
-        <span>samtools</span>
-        <span>bedtools</span>
-        <span>BAM · BED · GTF</span>
-        <span>ENCODE</span>
+        <span>samtools · regtools</span>
+        <span>Ensembl REST</span>
+        <span>ENCODE (GRCh38)</span>
+        <span>R Markdown</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/romainkpakou/splicing-cardio-encode" target="_blank" rel="noopener">Dépôt GitHub →</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/romainkpakou/splicing-cardio-encode/blob/main/results/report.html" target="_blank" rel="noopener">Rapport →</a>
       </div>
     </article>
 
