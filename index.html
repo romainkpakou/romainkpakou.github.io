@@ -1339,7 +1339,7 @@
           <div class="stat-label">Stages<br />en bioinfo</div>
         </div>
         <div>
-          <div class="stat-num">8</div>
+          <div class="stat-num">9</div>
           <div class="stat-label">Projets<br />réalisés</div>
         </div>
         <div>
@@ -1780,6 +1780,31 @@
       </div>
     </article>
 
+    <article class="project-card">
+      <div class="project-meta">
+        <span class="project-num">/ 09</span>
+        <span class="project-type">Biologie des réseaux · Génétique</span>
+      </div>
+      <h3 class="project-title">Priorisation de gènes par <em>réseau multicouche</em></h3>
+      <p class="project-desc">
+        Priorisation de gènes candidats par marche aléatoire avec redémarrage
+        (MultiXrank) sur réseau PPI multicouche (STRING, par canal de preuve),
+        appliquée à la cardiomyopathie dilatée et à la SLA. Validation leave-one-out :
+        rang médian 325 et 90 sur ~19 400 candidats (hasard ≈ 9 700), spécificité
+        confirmée entre les deux maladies.
+      </p>
+      <div class="project-stack">
+        <span>MultiXrank · RWR</span>
+        <span>STRING · Orphanet</span>
+        <span>Python</span>
+        <span>Validation supervisée</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/romainkpakou/cardiomyopathy-network-prioritization" target="_blank" rel="noopener">Dépôt GitHub →</a>
+        <a href="https://htmlpreview.github.io/?https://github.com/romainkpakou/cardiomyopathy-network-prioritization/blob/main/results/report.html" target="_blank" rel="noopener">Rapport →</a>
+      </div>
+    </article>
+
   </div>
 </section>
 
@@ -1883,7 +1908,7 @@
   // Animated stats counter
   // -----------------------------------------------------
   const statNums = document.querySelectorAll('.stat-num');
-  const targets = ['3', '8', '284'];
+  const targets = ['3', '9', '284'];
 
   const statObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
