@@ -1,62 +1,41 @@
-# Portfolio — Romain Kpakou
+# romainkpakou.github.io
 
 **🔗 En ligne : [romainkpakou.github.io](https://romainkpakou.github.io)**
 
-Portfolio professionnel de bioinformaticien & data scientist. Site statique en un seul
-fichier HTML, sans framework ni dépendance de build, hébergé gratuitement sur GitHub Pages.
+Portfolio professionnel de bioinformaticien & data scientist.
 
-## Contenu du site
+## Ce repo
 
-- **Présentation** — profil, approche, formation
-- **Compétences** — pipelines NGS, bioinformatique structurale, data science & ML
-- **Parcours** — timeline formation & expériences (2019 → 2026)
-- **Projets** — sélection de projets appliqués, avec liens vers les dépôts GitHub concernés
-- **Contact** — email, téléphone, LinkedIn, GitHub, CV téléchargeable
+Ce repo contient l'**export statique buildé** du portfolio, publié directement par GitHub
+Pages. Ce n'est plus le code source à modifier.
 
-## Stack technique
+Le code source (Next.js + TypeScript + Tailwind + shadcn/ui + Framer Motion) vit dans un
+projet séparé. Pour mettre à jour le contenu du site :
 
-- **HTML / CSS / JavaScript vanilla** — aucun framework, aucune dépendance
-- **Polices** : Fraunces (display), Geist (texte), JetBrains Mono (mono) — via Google Fonts
-- **Animations** : révélation au scroll (IntersectionObserver), transitions CSS pures
-- **Accessibilité** : respecte `prefers-reduced-motion`, reste utilisable sans JavaScript
-- **Responsive** : desktop, tablette, mobile
+1. Modifier le contenu dans `src/lib/content.ts` du projet source (profil, compétences,
+   parcours, projets).
+2. Builder l'export statique :
+   ```bash
+   STATIC_EXPORT=true npm run build
+   ```
+3. Copier le contenu généré dans `out/` vers ce repo (en écrasant tout sauf `.git`) :
+   ```bash
+   rm -rf assets index.html robots.txt sitemap.xml _next cv img rapports \
+         404.html favicon.ico _not-found* __next* index.txt .nojekyll
+   cp -a <chemin-vers-projet-source>/out/. .
+   ```
+4. Committer et pousser sur `main` — GitHub Pages republie automatiquement (1–2 minutes).
 
-## Structure
+## Point technique important : `.nojekyll`
 
-```
-.
-├── index.html                       # Portfolio complet (structure, styles, script)
-├── assets/
-│   ├── cv/Romain_KPAKOU_CV.pdf      # CV téléchargeable depuis le site
-│   └── img/
-│       ├── README.md                # Comment ajouter une photo de profil
-│       └── photo.jpg                # Optionnelle — initiales "RK" affichées par défaut si absente
-└── README.md
-```
+GitHub Pages traite les fichiers par **Jekyll** par défaut, qui **ignore tout ce qui
+commence par `_`** — ce qui supprimerait le dossier `_next/` (tout le CSS/JS de
+l'application) du site publié. Le fichier `.nojekyll` à la racine désactive ce
+traitement. **Il doit toujours être présent** après chaque republication.
 
-## Mettre à jour le contenu
+## Sécurité
 
-```bash
-git clone https://github.com/romainkpakou/romainkpakou.github.io.git
-cd romainkpakou.github.io
-# éditer les fichiers...
-git add .
-git commit -m "Mise à jour du portfolio"
-git push
-```
-
-Le site se redéploie automatiquement via GitHub Pages à chaque push sur `main` (1–2 minutes).
-
-**Points d'entrée utiles dans `index.html` :**
-
-| À modifier | Repère |
-|---|---|
-| Disponibilité | `hero-meta-item` (en-tête) et `contact-block-value` (section contact) |
-| Chiffres clés ("À propos") | `const targets = [...]` dans le script en bas du fichier |
-| Nouveau projet | dupliquer un `<article class="project-card">` dans `#projects` |
-| CV | remplacer `assets/cv/Romain_KPAKOU_CV.pdf` (même nom de fichier) |
-| Photo de profil | voir `assets/img/README.md` |
-
-## Licence
-
-Contenu personnel — libre d'usage et de modification pour Romain Kpakou.
+Les headers HTTP de sécurité (CSP, HSTS, etc.) sont définis dans le projet source mais
+**ne s'appliquent pas ici** : GitHub Pages sert des fichiers statiques bruts, sans passer
+par un serveur Next.js capable de les émettre. Choix assumé : le site est 100% statique,
+sans formulaire ni donnée sensible — la surface d'attaque réelle reste minime.
